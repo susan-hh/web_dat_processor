@@ -17,6 +17,13 @@ class Config:
     # CSRF 保护
     WTF_CSRF_ENABLED = True
     WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY') or 'csrf-key-please-change'
+    
+    # GitHub 配置
+    GITHUB_CONFIG = {
+        'repository': os.environ.get('GITHUB_REPOSITORY_URL'),
+        'branch': os.environ.get('GITHUB_BRANCH', 'main'),
+        'username': os.environ.get('GITHUB_USERNAME'),
+    }
 
 class ProductionConfig(Config):
     DEBUG = False

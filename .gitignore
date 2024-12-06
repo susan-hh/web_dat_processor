@@ -23,6 +23,9 @@ env/
 .vscode/
 .idea/
 
+# 构建文件
+.vercel
+
 # GitHub 相关
 .git/
 *.git
