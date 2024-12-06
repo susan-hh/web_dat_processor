@@ -1,5 +1,7 @@
-# 环境变量文件
+# 环境变量
 .env
+.env.*
+!.env.example
 
 # 临时文件
 static/temp/*
@@ -14,9 +16,17 @@ __pycache__/
 venv/
 env/
 
-# 日志文件
+# 日志
 *.log
 
-# IDE 配置
+# IDE
 .vscode/
-.idea/ 
+.idea/
+
+# GitHub 相关
+.git/
+*.git
+.gitattributes
+
+# 敏感信息
+github_config.py 
