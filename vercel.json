@@ -2,22 +2,27 @@
     "version": 2,
     "builds": [
         {
-            "src": "app.py",
+            "src": "api/index.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
+        {
+            "src": "/favicon.ico",
+            "dest": "/api/index.py"
+        },
         {
             "src": "/static/(.*)",
             "dest": "/static/$1"
         },
         {
             "src": "/(.*)",
-            "dest": "app.py"
+            "dest": "/api/index.py"
         }
     ],
     "env": {
         "FLASK_ENV": "production",
-        "PYTHONPATH": "."
+        "PYTHONPATH": ".",
+        "FLASK_APP": "api/index.py"
     }
 } 
