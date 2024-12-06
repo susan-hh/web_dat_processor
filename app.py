@@ -275,4 +275,4 @@ def internal_error(error):
                          error_description='服务器遇到了一个错误。'), 500
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run() 
