@@ -42,8 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingText.className = 'progress-text';
         loadingText.textContent = '正在处理文件...';
         document.body.appendChild(loadingText);
-
-        try {
             const formData = new FormData();
             Array.from(files).forEach(file => {
                 formData.append('files[]', file);
@@ -84,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     img.onerror = () => {
                         console.error(`图片加载失败: ${result.filename}`);
                     };
-                    
                     // 创建下载按钮
                     const downloadBtn = document.createElement('button');
                     downloadBtn.className = 'download-btn';
@@ -118,8 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fileInput.value = '';
         }
     });
-
-    clearButton.addEventListener('click', async () => {
+	clearButton.addEventListener('click', async () => {
         try {
             await fetch('/clear', { method: 'POST' });
             imageContainer.innerHTML = '';
@@ -140,8 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const progressText = document.createElement('div');
         progressText.className = 'progress-text';
         document.body.appendChild(progressText);
-
-        try {
+		try {
             let successCount = 0;
             let failCount = 0;
             const totalCount = imageItems.length;
@@ -159,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
+
 
                     // 获取blob数据
                     const blob = await response.blob();
@@ -202,3 +198,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }); 
+
+

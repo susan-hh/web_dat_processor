@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 尝试以下几种引用方式之一 -->
-    <link rel="stylesheet" href="/static/css/style.css">
-    <!-- 或者 -->
-    <link rel="stylesheet" href="./static/css/style.css">
-    <!-- 或者 -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信dat文件转换器By SQ</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 您的页面内容 -->
+    <div class="container">
+        <div class="header">
+            <h1>已为 <span id="processed-count">0</span> 个dat文件提供了转化服务</h1>
+        </div>
+        
+        <div class="instructions">
+            <p>1. 微信dat文件默认在【 C:\Users\Administrator\Documents\WeChat Files 】下，找到FileStorage/Image，2022年6月以后在MsgAttach下的微信dat文件上传即可，或者到微信-设置-文件管理路径下查看路径。</p>
+            <p>2. 考虑到文件过多会影响访问速度，故只有小于（0.5M）的文件可在线转换。</p>
+            <p>3. 微信dat文件是获取即转，删除并可下载图片，但无法删除电脑本地文件。</p>
+        </div>
+        
+        <div class="controls">
+            <input type="file" 
+                   id="file-input" 
+                   name="files[]"
+                   multiple 
+                   accept=".dat"
+                   style="display: none">
+            <label for="file-input" id="select-files" class="btn primary">选择微信dat文件（可多选）</label>
+            <button id="clear-all" class="btn warning">清空</button>
+            <button id="download-all" class="btn success">全部下载</button>
+        </div>
+        
+        <div id="image-container" class="image-grid"></div>
+    </div>
+    
+    <script src="js/main.js"></script>
 </body>
-</html>
+</html> 
