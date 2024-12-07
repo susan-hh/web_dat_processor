@@ -28,12 +28,6 @@ class Config:
 class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
-    # 生产环境必须设置安全的密钥
-    SECRET_KEY = os.environ.get('SECRET_KEY') or None
-    WTF_CSRF_SECRET_KEY = os.environ.get('WTF_CSRF_SECRET_KEY') or None
-    
-    if not (SECRET_KEY and WTF_CSRF_SECRET_KEY):
-        raise ValueError("Production environment must set SECRET_KEY and WTF_CSRF_SECRET_KEY")
     
     # 添加安全头
     SECURE_HEADERS = {
@@ -46,6 +40,8 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     TESTING = False
+    SECRET_KEY = 'dev-key-for-testing'
+    WTF_CSRF_SECRET_KEY = 'dev-csrf-key-for-testing'
 
 class TestingConfig(Config):
     DEBUG = True

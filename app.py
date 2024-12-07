@@ -275,4 +275,5 @@ def internal_error(error):
                          error_description='服务器遇到了一个错误。'), 500
 
 if __name__ == '__main__':
-    app.run() 
+    # 本地开发环境使用 debug 模式
+    app.run(debug=True, host='0.0.0.0', port=5000) 
