@@ -7,6 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageContainer = document.querySelector('#image-container');
     const processedCount = document.querySelector('#processed-count');
 
+    // 从 localStorage 获取计数器的值，如果没有则设为 0
+    let count = parseInt(localStorage.getItem('processedCount') || '0');
+    processedCount.textContent = count;
+
+    // 更新计数器的函数
+    function updateCount(increment = 1) {
+        count += increment;
+        processedCount.textContent = count;
+        localStorage.setItem('processedCount', count);
+    }
+
     // 调试信息
     console.log('DOM加载完成');
     console.log('文件输入框:', fileInput);
@@ -149,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     imageContainer.appendChild(imageItem);
                     
                     // 更新计数器
-                    processedCount.textContent = parseInt(processedCount.textContent || '0') + 1;
+                    updateCount();
                 };
                 
                 reader.onerror = function() {
